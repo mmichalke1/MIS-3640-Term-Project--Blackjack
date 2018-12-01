@@ -2,8 +2,9 @@ import random
 import math
 
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']*4
-pot = 100
-bet = 0
+# deck = ['King', 'Ace']*4
+player_pot = 100
+bet_placed = 0
 
 # def num_decks():
 #     print("How many decks do you want to play with?")
@@ -51,6 +52,7 @@ def outcomes(dhand, phand):
 
 
 def score(dhand, phand):
+    global player_pot, bet_placed
     """Ends the hand, tells the outcome and sets up replay"""
     if total(dhand) == 21 and total(phand) == 21:
         outcomes(dhand, phand)
@@ -58,18 +60,23 @@ def score(dhand, phand):
     if total(phand) == 21:
         outcomes(dhand, phand)
         print("21! You Win")
+        player_pot += bet_placed
     elif total(phand) > 21:
         outcomes(dhand, phand)
         print("You Busted. You Lose")
+        player_pot -= bet_placed
     elif total(dhand) > 21:
         outcomes(dhand, phand)
         print("The Dealer Busted. You Win")
+        player_pot += bet_placed
     elif total(phand) < total(dhand):
         outcomes(dhand, phand)
         print("The Dealer has a higher number. You Lose")
+        player_pot -= bet_placed
     elif total(dhand) < total(phand):
         outcomes(dhand, phand)
         print("You have a higher number than the Dealer. You Win")
+        player_pot += bet_placed
     elif total(dhand) == total(phand):
         outcomes(dhand, phand)
         print("You have pushed with the dealer")
@@ -78,13 +85,16 @@ def score(dhand, phand):
 
 def blackjack(dhand, phand):
     """Checks for Blackjack between player and dealer"""
+    global player_pot
     if total(phand) == 21:
         outcomes(dhand, phand)
         print("BlackJack You Win!")
+        player_pot += bet_placed * 1.5
         replay()
     elif total(dhand) == 21:
         outcomes(dhand, phand)
         print("Dealer has BlackJack. You Lose.")
+        player_pot -= bet_placed
         replay()
 
 def replay():
@@ -102,6 +112,7 @@ def replay():
 
 def options(dhand, phand):
     """Runs player through options of game"""
+    global bet_placed
     while total(phand) < 21:
         choice = input("Do you want to [Hit], or [Stay]").lower()
         if choice == "hit":
@@ -109,8 +120,18 @@ def options(dhand, phand):
             card = deck.pop()
             phand.append(card)
             print("you now have" + str(phand) + " for a total of " + str(total(phand)))
-            if total(phand) >= 21:
+            if total(phand) > 21:
                 score(dhand, phand)
+        elif choice == 'double':
+            bet_placed = bet_placed*2
+            card = deck.pop()
+            phand.append(card)
+            print("you now have" + str(phand) + " for a total of " + str(total(phand)))
+            if total(phand) > 21:
+                score(dhand, phand)
+            else:
+                dealer(dhand, phand)
+            break
         else:
             dealer(dhand, phand)
 
@@ -126,20 +147,17 @@ def dealer(dhand, phand):
 
 
 def bet():
-    """Tells the player the pot and asks how much they want to bet. Need to work on verifying inputs"""
-    bet = (input('Your pot is {}. How much would you like to bet on this hand?'.format(pot)))
-    print(type(bet))
-    while type(int(bet))!= int:
-        bet = (input('Please select a number for your bet'))
-    while bet > pot:
-        bet = (input('Please select an amount less than your pot'))
-    bet = int(bet)
+    """Tells the player the pot and asks how much they want to bet."""
+    global bet_placed
+    bet_placed = (input('Your pot is {}. How much would you like to bet on this hand?'.format(player_pot)))
+    while (not bet_placed.isdigit()) or int(bet_placed) > player_pot:
+        bet_placed = (input('Please select a number for your bet that is within your pot.'))
+    return int(bet_placed)
 
-    
+
 def game():
-    choice = 0
-    print("WELCOME TO BLACKJACK!")
-    bet()
+    global bet_placed
+    bet_placed = bet()
     dhand = deal(deck)
     phand = deal(deck)
     print("The dealer is showing a " + str(dhand[0]))
@@ -148,5 +166,9 @@ def game():
     options(dhand, phand)
 
 
-if __name__ == "__main__":
+def program():
+    print("WELCOME TO BLACKJACK!")
     game()
+
+if __name__ == "__main__":
+    program()
