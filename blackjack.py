@@ -2,7 +2,7 @@ import random
 import math
 
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']*4
-# deck = ['King', 'Ace']*4
+# deck = ['Ace', 9]*10
 player_pot = 100
 bet_placed = 0
 
@@ -25,23 +25,17 @@ def total(hand):
     """Sums up the total for the hand submitted"""
     total = 0
     for card in hand:
-        if card is "Jack" or card is "Queen" or card is "King":
+        if card in ["Jack", "Queen", "King"]:
             total += 10
         elif card != "Ace":
             total += card
         else:
             total += 11
-    if total > 21 and hand.count('Ace') > 0:
-        # an ace can be 11 or 1 so if the total is greater than 21 it should be a 1
-        total -= 10
-        if total > 21 and hand.count('Ace') > 1:
+    aces = hand.count('Ace')
+    for ace in range(aces):
+        if total > 21:
+            # an ace can be 11 or 1 so if the total is greater than 21 it should be a 1
             total -= 10
-            if total > 21 and hand.count('Ace') > 2:
-                total -= 10
-                if total > 21 and hand.count('Ace') > 3:
-                    total -= 10
-                    if total > 21 and hand.count('Ace') > 4:
-                        total -= 10
     return total
 
 
@@ -117,7 +111,7 @@ def replay():
 def options(dhand, phand):
     """Runs player through options of game"""
     global bet_placed, player_pot, deck
-    while total(phand) < 21:
+    while total(phand) <= 21:
         if phand[0] == phand[1]:
             choice = input("Do you want to [Hit], [Stay], [Double] or [Split]").lower()
         else:
@@ -180,6 +174,8 @@ def game():
     bet_placed = bet()
     dhand = deal(deck)
     phand = deal(deck)
+    # dhand = [5, 'Queen'] You can use this to make specific games where we've seen bugs
+    # phand = [3, 6, 2]
     print("The dealer is showing a " + str(dhand[0]))
     print("You have a " + str(phand) + " for a total of " + str(total(phand)))
     blackjack(dhand, phand)
