@@ -111,11 +111,14 @@ def replay():
 def options(dhand, phand):
     """Runs player through options of game"""
     global bet_placed, player_pot, deck
+    loop = 1
     while total(phand) <= 21:
-        if phand[0] == phand[1]:
+        if phand[0] == phand[1] and loop == 1:
             choice = input("Do you want to [Hit], [Stay], [Double] or [Split]").lower()
-        else:
+        elif loop == 1:
             choice = input("Do you want to [Hit], [Stay] or [Double]").lower()
+        else:
+            choice = input("Do you want to [Hit] or [Stay]").lower()
         if choice == "hit":
             # if they hit, it removes a card and adds it to the hand
             card = deck.pop()
@@ -123,7 +126,7 @@ def options(dhand, phand):
             print("you now have" + str(phand) + " for a total of " + str(total(phand)))
             if total(phand) > 21:
                 score(dhand, phand)
-        elif choice == 'double':
+        elif choice == 'double' and loop == 1:
             double_bet = bet_placed
             if player_pot < bet_placed*2:
                 double_bet = player_pot - bet_placed
@@ -138,7 +141,7 @@ def options(dhand, phand):
             else:
                 dealer(dhand, phand)
             break
-        elif choice == 'split':
+        elif choice == 'split' and loop == 1:
             card1 = deck.pop()
             card2 = deck.pop()
             phand1 = [phand[0], card1]
@@ -148,6 +151,7 @@ def options(dhand, phand):
             options(dhand, phand2)
         else:
             dealer(dhand, phand)
+        loop += 1
 
 
 def dealer(dhand, phand):
