@@ -98,6 +98,10 @@ def blackjack(dhand, phand):
         replay()
 
 def replay():
+    global player_pot
+    if player_pot <= 0:
+        print('You are out of money. Goodbye')
+        exit()
     another = input("Do you want to play again? (Yes/No) : ").lower()
     if another == "yes":
         dhand = []
@@ -112,9 +116,12 @@ def replay():
 
 def options(dhand, phand):
     """Runs player through options of game"""
-    global bet_placed
+    global bet_placed, player_pot, deck
     while total(phand) < 21:
-        choice = input("Do you want to [Hit], or [Stay]").lower()
+        if phand[0] == phand[1]:
+            choice = input("Do you want to [Hit], [Stay], [Double] or [Split]").lower()
+        else:
+            choice = input("Do you want to [Hit], [Stay] or [Double]").lower()
         if choice == "hit":
             # if they hit, it removes a card and adds it to the hand
             card = deck.pop()
@@ -123,7 +130,12 @@ def options(dhand, phand):
             if total(phand) > 21:
                 score(dhand, phand)
         elif choice == 'double':
-            bet_placed = bet_placed*2
+            double_bet = bet_placed
+            if player_pot < bet_placed*2:
+                double_bet = player_pot - bet_placed
+                print('You have less than the amount you need to double. The remainder of your pot, {}, will be added '
+                      'to your bet.'.format(player_pot-bet_placed))
+            bet_placed += double_bet
             card = deck.pop()
             phand.append(card)
             print("you now have" + str(phand) + " for a total of " + str(total(phand)))
@@ -132,6 +144,14 @@ def options(dhand, phand):
             else:
                 dealer(dhand, phand)
             break
+        elif choice == 'split':
+            card1 = deck.pop()
+            card2 = deck.pop()
+            phand1 = [phand[0], card1]
+            phand2 = [phand[1], card2]
+            print('Your first hand is {}'.format(phand1))
+            options(dhand, phand1)
+            options(dhand, phand2)
         else:
             dealer(dhand, phand)
 
