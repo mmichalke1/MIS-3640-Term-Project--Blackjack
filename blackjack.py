@@ -3,8 +3,8 @@ import math
 
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']*4
 # deck = ['Ace', 9]*10
-player_pot = 100
-bet_placed = 0
+player_pot = 100.0
+bet_placed = 0.0
 
 # def num_decks():
 #     print("How many decks do you want to play with?")
@@ -92,17 +92,15 @@ def blackjack(dhand, phand):
         replay()
 
 def replay():
-    global player_pot
+    global player_pot, deck
     if player_pot <= 0:
         print('You are out of money. Goodbye')
         exit()
     another = input("Do you want to play again? (Yes/No) : ").lower()
     if another == "yes":
-        dhand = []
-        phand = []
-        # if len(deck) < 20:
-        #     deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
-        #     print("The Deck has been shuffled")
+        if len(deck) < 20:
+            deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
+            print("The Deck has been shuffled")
         game()
     else:
         print("Game Over")
@@ -168,9 +166,9 @@ def bet():
     """Tells the player the pot and asks how much they want to bet."""
     global bet_placed
     bet_placed = (input('Your pot is {}. How much would you like to bet on this hand?'.format(player_pot)))
-    while (not bet_placed.isdigit()) or int(bet_placed) > player_pot:
+    while (not bet_placed.isdigit()) or float(bet_placed) > player_pot:
         bet_placed = (input('Please select a number for your bet that is within your pot.'))
-    return int(bet_placed)
+    return float(bet_placed)
 
 
 def game():
