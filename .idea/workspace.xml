@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f3b8b5d1-ce2d-4e5d-8566-28d1cdab2025" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/MIS-3640-Term-Project--Blackjack.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/10c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/10d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/10h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/10s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/2c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/2d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/2h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/2s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/3c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/3d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/3h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/3s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/4c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/4d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/4h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/4s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/5c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/5d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/5h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/5s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/6c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/6d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/6h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/6s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/7c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/7d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/7h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/7s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/8c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/8d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/8h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/8s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/9c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/9d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/9h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/9s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/ac.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/ad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/ah.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/as.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/cardback.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/cards from pello.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/jc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/jd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/jh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/js.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/kc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/kd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/kh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/ks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/qc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/qd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/qh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/cards/qs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icon_full.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blackjack.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackjack.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blackjack.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1570">
+              <caret line="92" column="42" lean-forward="true" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/blackjack.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="2585" />
+    <option name="height" value="1395" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MIS-3640-Term-Project--Blackjack" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MIS-3640-Term-Project--Blackjack" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="blackjack" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MIS-3640-Term-Project--Blackjack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/blackjack.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.blackjack" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f3b8b5d1-ce2d-4e5d-8566-28d1cdab2025" name="Default Changelist" comment="" />
+      <created>1543955223735</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1543955223735</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1477" height="797" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2498265" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32882884" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32882884" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/blackjack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1570">
+          <caret line="92" column="42" lean-forward="true" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
