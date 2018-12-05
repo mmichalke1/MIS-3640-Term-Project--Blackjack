@@ -137,7 +137,7 @@ Returns if card is Ace and the card itself.'''
 
 def initGame(cList, uList, dList):
     '''Generates two cards for dealer and user, one at a time for each.
-Returns if card is Ace and the total amount of the cards per person.'''
+        Returns if card is Ace and the total amount of the cards per person.'''
     userA = 0
     dealA = 0
     card1, cA = genCard(cList, uList)
@@ -154,6 +154,7 @@ def main():
     #Local Variable
     ccards = copy.copy(cards)
     stand = False
+    newGame = True
     userCard = []
     dealCard = []
     playerPot = 100
@@ -169,10 +170,13 @@ def main():
     doubleTxt = font.render('Double Down', 1, black)
     restartTxt = font.render('New Game', 1, black)
     gameoverTxt = font.render('GAME OVER', 1, white)
+    newBetTxt = font.render('Place your bet!', 1, white)
+    # Added bet features
     bet1Txt = font.render('5', 1, black)
     bet2Txt = font.render('10', 1, black)
     bet3Txt = font.render('15', 1, black)
-    userSum, userA, dealSum, dealA = initGame(ccards, userCard, dealCard)
+
+    userSum, userA, dealSum, dealA = 0, 0, 0, 0
     userSumTxt = font.render(str(userSum), 1, black)
 
     #Fill Background
@@ -183,16 +187,16 @@ def main():
     standB = pygame.draw.rect(background, gray, (95, 445, 75, 25))
     doubleB = pygame.draw.rect(background, gray, (180, 445, 115, 25))
     ratioB = pygame.draw.rect(background, gray, (555, 420, 75, 50))
+    # Create buttons for betting and scoreboard
     bet1B = pygame.draw.rect(background, gray, (305, 445, 25, 25))
     bet2B = pygame.draw.rect(background, gray, (335, 445, 25, 25))
     bet3B = pygame.draw.rect(background, gray, (365, 445, 25, 25))
     scoreboard = pygame.draw.rect(background, gray, (555, 200, 75, 75))
 
-    win = 0
+    hit = 0
+    play = 0    #flag variable. if its 0, the game has not been started yet.
     #Event Loop
-    print('starting game')
     while True:
-        print('checking if game is over')
         gameover = True if (userSum >= 21 and userA == 0) or len(userCard) == 5 else False
         if len(userCard) == 2 and userSum == 21:
             gameover = True
@@ -204,84 +208,83 @@ def main():
 
 
         #background needs to be redisplayed because it gets updated
+        # Keeps pot and bets updated
         potTxt = font.render('Pot: %i' % playerPot, 1, black)
         betTxt = font.render('Bet: %i' % playerBet, 1, black)
 
-        print('checking for mouse clicks')
+
         #checks for mouse clicks on buttons
         for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN and bet1B.collidepoint(pygame.mouse.get_pos()):
+            # checks for clicks for certain bet amounts provided
+            if event.type == pygame.MOUSEBUTTONDOWN and bet1B.collidepoint(pygame.mouse.get_pos()) and play == 0:
                 playerBet = 5
-            elif event.type == pygame.MOUSEBUTTONDOWN and bet2B.collidepoint(pygame.mouse.get_pos()):
+            elif event.type == pygame.MOUSEBUTTONDOWN and bet2B.collidepoint(pygame.mouse.get_pos()) and play == 0:
                 playerBet = 10
-            elif event.type == pygame.MOUSEBUTTONDOWN and bet3B.collidepoint(pygame.mouse.get_pos()):
+            elif event.type == pygame.MOUSEBUTTONDOWN and bet3B.collidepoint(pygame.mouse.get_pos()) and play == 0:
                 playerBet = 15
+
+
             if event.type == QUIT:
                 pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN and not (gameover or stand) and hitB.collidepoint(pygame.mouse.get_pos()):
-                #gives player a card if they don't break blackjack rules
-                print('hit was pressed')
+                # gives player a card if they don't break blackjack rules
+                # hit is a flag variable. You can not double if you've already hit
+                hit = 1
                 card, cA = genCard(ccards, userCard)
                 userA += cA
                 userSum += getAmt(card)
-                print('User: %i' % userSum)
                 while userSum > 21 and userA > 0:
                     userA -= 1
                     userSum -= 10
             elif event.type == pygame.MOUSEBUTTONDOWN and not gameover and standB.collidepoint(pygame.mouse.get_pos()):
                 #when player stands, the dealer plays
-                print('stay was pressed')
                 stand = True
                 while dealSum <= 17:
                     card, cA = genCard(ccards, dealCard)
                     dealA += cA
                     dealSum += getAmt(card)
-                    print('Dealer: %i' % dealSum)
                     while dealSum > 21 and dealA > 0:
                         dealA -= 1
                         dealSum -= 10
-            elif event.type == pygame.MOUSEBUTTONDOWN and not (gameover or stand) and doubleB.collidepoint(pygame.mouse.get_pos()):
-                print('double was pressed')
+            elif event.type == pygame.MOUSEBUTTONDOWN and not (gameover or stand) and doubleB.collidepoint(pygame.mouse.get_pos()) and hit == 0:
+                # doubles a players bet and gives them one card. Dealers play
                 playerBet = playerBet*2
                 card, cA = genCard(ccards, userCard)
                 userA += cA
                 userSum += getAmt(card)
-                print('User: %i' % userSum)
                 while userSum > 21 and userA > 0:
                     userA -= 1
                     userSum -= 10
                 stand = True
+                # Dealer plays
                 while dealSum <= 17:
                     card, cA = genCard(ccards, dealCard)
                     dealA += cA
                     dealSum += getAmt(card)
-                    print('Dealer: %i' % dealSum)
                     while dealSum > 21 and dealA > 0:
                         dealA -= 1
                         dealSum -= 10
-            elif event.type == pygame.MOUSEBUTTONDOWN and (gameover or stand) and restartB.collidepoint(pygame.mouse.get_pos()):
-                #restarts the game, updating scores
-                print('restart button was pressed')
+            elif event.type == pygame.MOUSEBUTTONDOWN and (gameover or stand or newGame) and restartB.collidepoint(pygame.mouse.get_pos()):
+                # restarts the game, updating scores
                 if userSum == dealSum:
                     pass
                 elif userSum <= 21 and len(userCard) == 5:
-                    print('player won')
                     playerPot += playerBet
                 elif dealSum < userSum <= 21 or dealSum > 21:
-                    print('player won')
                     playerPot += playerBet
                 else:
-                    print('player lost')
                     playerPot -= playerBet
+                play = 1
                 gameover = False
                 stand = False
+                newGame = False
                 userCard = []
                 dealCard = []
                 ccards = copy.copy(cards)
                 userSum, userA, dealSum, dealA = initGame(ccards, userCard, dealCard)
                 restartB = pygame.draw.rect(background, (80, 150, 15), (270, 225, 75, 25))
 
-        print('loading screen and words')
+        # loads words into program
         screen.blit(background, (0, 0))
         screen.blit(hitTxt, (39, 448))
         screen.blit(standTxt, (116, 448))
@@ -292,31 +295,29 @@ def main():
         screen.blit(potTxt, (565, 423))
         screen.blit(betTxt, (565, 448))
 
-        potTxt = font.render('Pot: %i' % playerPot, 1, black)
-        betTxt = font.render('Bet: %i' % playerBet, 1, black)
-
         dScoreTxt = font.render('Dealer: %i' %dealSum, 1, black)
         uScoreTxt = font.render('Player: %i' % userSum, 1, black)
         scoreTxt = font.render('Score', 1, black)
         screen.blit(uScoreTxt, (560, 250))
-
         screen.blit(scoreTxt, (575, 205))
+
         #displays dealer's cards
         for card in dealCard:
-            print('displaying cards')
             x = 10 + dealCard.index(card) * 110
             screen.blit(card, (x, 10))
-        screen.blit(cBack, (120, 10))
+        if newGame:
+            pass
+        else:
+            screen.blit(cBack, (120, 10))
 
         #displays player's cards
         for card in userCard:
-            print('displaying cards')
             x = 10 + userCard.index(card) * 110
             screen.blit(card, (x, 295))
 
         #when game is over, draws restart button and text, and shows the dealer's second card
         if gameover or stand:
-            print('game is over')
+            # checks to see if you won, lost or pushed
             if dealSum < userSum <= 21 or dealSum > 21:
                 gameoverTxt = font.render('You win!', 1, white)
             elif dealSum == userSum:
@@ -325,10 +326,18 @@ def main():
                 gameoverTxt = font.render('You lose!', 1, white)
             screen.blit(dScoreTxt, (560, 230))
             screen.blit(gameoverTxt, (270, 200))
+            screen.blit(newBetTxt, (270, 260))
             restartB = pygame.draw.rect(background, gray, (270, 225, 75, 25))
             screen.blit(restartTxt, (275, 228))
             screen.blit(dealCard[1], (120, 10))
-            win = 0
+            hit = 0
+            play = 0
+        elif newGame:
+            screen.blit(restartTxt, (275, 228))
+            restartB = pygame.draw.rect(background, gray, (270, 225, 75, 25))
+            screen.blit(newBetTxt, (270, 260))
+            hit = 0
+            play = 0
         pygame.display.update()
             
 

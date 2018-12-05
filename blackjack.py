@@ -1,101 +1,4 @@
 import random
-import math
-import pygame
-from pygame.locals import *
-import copy
-
-
-#Load Images
-icon = pygame.image.load('resources/icon.png')
-cBack = pygame.image.load('resources/cards/cardback.png')
-diamondA = pygame.image.load('resources/cards/ad.png')
-clubA = pygame.image.load('resources/cards/ac.png')
-heartA = pygame.image.load('resources/cards/ah.png')
-spadeA = pygame.image.load('resources/cards/as.png')
-diamond2 = pygame.image.load('resources/cards/2d.png')
-club2 = pygame.image.load('resources/cards/2c.png')
-heart2 = pygame.image.load('resources/cards/2h.png')
-spade2 = pygame.image.load('resources/cards/2s.png')
-diamond3 = pygame.image.load('resources/cards/3d.png')
-club3 = pygame.image.load('resources/cards/3c.png')
-heart3 = pygame.image.load('resources/cards/3h.png')
-spade3 = pygame.image.load('resources/cards/3s.png')
-diamond4 = pygame.image.load('resources/cards/4d.png')
-club4 = pygame.image.load('resources/cards/4c.png')
-heart4 = pygame.image.load('resources/cards/4h.png')
-spade4 = pygame.image.load('resources/cards/4s.png')
-diamond5 = pygame.image.load('resources/cards/5d.png')
-club5 = pygame.image.load('resources/cards/5c.png')
-heart5 = pygame.image.load('resources/cards/5h.png')
-spade5 = pygame.image.load('resources/cards/5s.png')
-diamond6 = pygame.image.load('resources/cards/6d.png')
-club6 = pygame.image.load('resources/cards/6c.png')
-heart6 = pygame.image.load('resources/cards/6h.png')
-spade6 = pygame.image.load('resources/cards/6s.png')
-diamond7 = pygame.image.load('resources/cards/7d.png')
-club7 = pygame.image.load('resources/cards/7c.png')
-heart7 = pygame.image.load('resources/cards/7h.png')
-spade7 = pygame.image.load('resources/cards/7s.png')
-diamond8 = pygame.image.load('resources/cards/8d.png')
-club8 = pygame.image.load('resources/cards/8c.png')
-heart8 = pygame.image.load('resources/cards/8h.png')
-spade8 = pygame.image.load('resources/cards/8s.png')
-diamond9 = pygame.image.load('resources/cards/9d.png')
-club9 = pygame.image.load('resources/cards/9c.png')
-heart9 = pygame.image.load('resources/cards/9h.png')
-spade9 = pygame.image.load('resources/cards/9s.png')
-diamond10 = pygame.image.load('resources/cards/10d.png')
-club10 = pygame.image.load('resources/cards/10c.png')
-heart10 = pygame.image.load('resources/cards/10h.png')
-spade10 = pygame.image.load('resources/cards/10s.png')
-diamondJ = pygame.image.load('resources/cards/jd.png')
-clubJ = pygame.image.load('resources/cards/jc.png')
-heartJ = pygame.image.load('resources/cards/jh.png')
-spadeJ = pygame.image.load('resources/cards/js.png')
-diamondQ = pygame.image.load('resources/cards/qd.png')
-clubQ = pygame.image.load('resources/cards/qc.png')
-heartQ = pygame.image.load('resources/cards/qh.png')
-spadeQ = pygame.image.load('resources/cards/qs.png')
-diamondK = pygame.image.load('resources/cards/kd.png')
-clubK = pygame.image.load('resources/cards/kc.png')
-heartK = pygame.image.load('resources/cards/kh.png')
-spadeK = pygame.image.load('resources/cards/ks.png')
-
-#Set Icon
-pygame.display.set_icon(icon)
-
-#Global Constants
-black = (0,0,0)
-white = (255,255,255)
-gray = (192,192,192)
-
-cards = [ diamondA, clubA, heartA, spadeA,
-          diamond2, club2, heart2, spade2,
-          diamond3, club3, heart3, spade3,
-          diamond4, club4, heart4, spade4,
-          diamond5, club5, heart5, spade5,
-          diamond6, club6, heart6, spade6,
-          diamond7, club7, heart7, spade7,
-          diamond8, club8, heart8, spade8,
-          diamond9, club9, heart9, spade9,
-          diamond10, club10, heart10, spade10,
-          diamondJ, clubJ, heartJ, spadeJ,
-          diamondQ, clubQ, heartQ, spadeQ,
-          diamondK, clubK, heartK, spadeK]
-cardA = [ diamondA, clubA, heartA, spadeA]
-card2 = [ diamond2, club2, heart2, spade2]
-card3 = [ diamond3, club3, heart3, spade3]
-card4 = [ diamond4, club4, heart4, spade4]
-card5 = [ diamond5, club5, heart5, spade5]
-card6 = [ diamond6, club6, heart6, spade6]
-card7 = [ diamond7, club7, heart7, spade7]
-card8 = [ diamond8, club8, heart8, spade8]
-card9 = [ diamond9, club9, heart9, spade9]
-card10 = [ diamond10, club10, heart10, spade10,
-            diamondJ, clubJ, heartJ, spadeJ,
-            diamondQ, clubQ, heartQ, spadeQ,
-            diamondK, clubK, heartK, spadeK]
-
 
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']*4
 # deck = ['Ace', 9]*10
@@ -135,40 +38,27 @@ def total(hand):
     return total
 
 
-def outcomes(dhand, phand):
-    # pint("---Dealer shows " + str(dhand))
-    # print("you have" + str(phand))r
-    pass
-
-
 def score(dhand, phand):
     global player_pot, bet_placed
     """Ends the hand, tells the outcome and sets up replay"""
     if total(dhand) == 21 and total(phand) == 21:
-        outcomes(dhand, phand)
         print("Both you and the dealer have 21. You push.")
     if total(phand) == 21:
-        outcomes(dhand, phand)
         print("21! You Win")
         player_pot += bet_placed
     elif total(phand) > 21:
-        outcomes(dhand, phand)
         print("You Busted. You Lose")
         player_pot -= bet_placed
     elif total(dhand) > 21:
-        outcomes(dhand, phand)
         print("The Dealer Busted. You Win")
         player_pot += bet_placed
     elif total(phand) < total(dhand):
-        outcomes(dhand, phand)
         print("The Dealer has a higher number. You Lose")
         player_pot -= bet_placed
     elif total(dhand) < total(phand):
-        outcomes(dhand, phand)
         print("You have a higher number than the Dealer. You Win")
         player_pot += bet_placed
     elif total(dhand) == total(phand):
-        outcomes(dhand, phand)
         print("You have pushed with the dealer")
     replay()
 
@@ -177,12 +67,10 @@ def blackjack(dhand, phand):
     """Checks for Blackjack between player and dealer"""
     global player_pot
     if total(phand) == 21:
-        outcomes(dhand, phand)
         print("BlackJack You Win!")
         player_pot += bet_placed * 1.5
         replay()
     elif total(dhand) == 21:
-        outcomes(dhand, phand)
         print("Dealer has BlackJack. You Lose.")
         player_pot -= bet_placed
         replay()
@@ -208,11 +96,11 @@ def options(dhand, phand):
     loop = 1
     while total(phand) <= 21:
         if phand[0] == phand[1] and loop == 1:
-            choice = input("Do you want to [Hit], [Stay], [Double] or [Split]").lower()
+            choice = input("Do you want to [Hit], [Stay], [Double] or [Split] ").lower()
         elif loop == 1:
-            choice = input("Do you want to [Hit], [Stay] or [Double]").lower()
+            choice = input("Do you want to [Hit], [Stay] or [Double] ").lower()
         else:
-            choice = input("Do you want to [Hit] or [Stay]").lower()
+            choice = input("Do you want to [Hit] or [Stay] ").lower()
         if choice == "hit":
             # if they hit, it removes a card and adds it to the hand
             card = deck.pop()
@@ -261,9 +149,9 @@ def dealer(dhand, phand):
 def bet():
     """Tells the player the pot and asks how much they want to bet."""
     global bet_placed
-    bet_placed = (input('Your pot is {}. How much would you like to bet on this hand?'.format(player_pot)))
+    bet_placed = (input('Your pot is {}. How much would you like to bet on this hand? '.format(player_pot)))
     while (not bet_placed.isdigit()) or float(bet_placed) > player_pot:
-        bet_placed = (input('Please select a number for your bet that is within your pot.'))
+        bet_placed = (input('Please select a number for your bet that is within your pot. '))
     return float(bet_placed)
 
 
