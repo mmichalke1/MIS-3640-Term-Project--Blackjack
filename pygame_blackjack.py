@@ -159,7 +159,7 @@ def main():
     dealCard = []
     playerPot = 100
     playerBet = 0
-   
+    previous_bet = 0
     #Initialize Game
     pygame.init()
     screen = pygame.display.set_mode((640, 480))
@@ -228,6 +228,7 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN and not (gameover or stand) and hitB.collidepoint(pygame.mouse.get_pos()):
                 # gives player a card if they don't break blackjack rules
                 # hit is a flag variable. You can not double if you've already hit
+                previous_bet = playerBet
                 hit = 1
                 card, cA = genCard(ccards, userCard)
                 userA += cA
@@ -237,6 +238,7 @@ def main():
                     userSum -= 10
             elif event.type == pygame.MOUSEBUTTONDOWN and not gameover and standB.collidepoint(pygame.mouse.get_pos()):
                 #when player stands, the dealer plays
+                previous_bet = playerBet
                 stand = True
                 while dealSum <= 17:
                     card, cA = genCard(ccards, dealCard)
@@ -247,7 +249,7 @@ def main():
                         dealSum -= 10
             elif event.type == pygame.MOUSEBUTTONDOWN and not (gameover or stand) and doubleB.collidepoint(pygame.mouse.get_pos()) and hit == 0:
                 # doubles a players bet and gives them one card. Dealers play
-                playerBet = playerBet*2
+                previous_bet = playerBet*2
                 card, cA = genCard(ccards, userCard)
                 userA += cA
                 userSum += getAmt(card)
@@ -268,11 +270,11 @@ def main():
                 if userSum == dealSum:
                     pass
                 elif userSum <= 21 and len(userCard) == 5:
-                    playerPot += playerBet
+                    playerPot += previous_bet
                 elif dealSum < userSum <= 21 or dealSum > 21:
-                    playerPot += playerBet
+                    playerPot += previous_bet
                 else:
-                    playerPot -= playerBet
+                    playerPot -= previous_bet
                 play = 1
                 gameover = False
                 stand = False
