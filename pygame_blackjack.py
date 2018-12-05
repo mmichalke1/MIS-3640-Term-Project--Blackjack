@@ -200,7 +200,6 @@ def main():
         gameover = True if (userSum >= 21 and userA == 0) or len(userCard) == 5 else False
         if len(userCard) == 2 and userSum == 21:
             gameover = True
-            playerBet = playerBet*1.5
         elif len(dealCard) == 2 and dealSum == 21:
             gameover = True
 
