@@ -123,14 +123,14 @@ def options(dhand, phand):
             else:
                 dealer(dhand, phand)
             break
-        elif choice == 'split' and loop == 1:
-            card1 = deck.pop()
-            card2 = deck.pop()
-            phand1 = [phand[0], card1]
-            phand2 = [phand[1], card2]
-            print('Your first hand is {}'.format(phand1))
-            options(dhand, phand1)
-            options(dhand, phand2)
+        # elif choice == 'split' and loop == 1:
+        #     card1 = deck.pop()
+        #     card2 = deck.pop()
+        #     phand1 = [phand[0], card1]
+        #     phand2 = [phand[1], card2]
+        #     print('Your first hand is {}'.format(phand1))
+        #     options(dhand, phand1)
+        #     options(dhand, phand2)
         else:
             dealer(dhand, phand)
         loop += 1
